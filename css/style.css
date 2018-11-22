@@ -15,7 +15,7 @@ textarea {
   font-family: "Ubuntu", "Roboto", "Open Sans", "Microsoft YaHei", sans-serif;
 }
 .footer {
-  padding: 2rem 1.5rem 3rem;
+  padding: 1.5rem 1.5rem 1.5rem;
 }
 @media screen and (min-width: 1280px) {
   .is-1-column .container,
