@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
 <title>Tag: SSH - Fancy World</title>
@@ -11,7 +11,7 @@
 <meta property="og:title" content="Fancy World">
 <meta property="og:url" content="https://blackcatxj.github.io/blog/tags/SSH/index.html">
 <meta property="og:site_name" content="Fancy World">
-<meta property="og:locale" content="default">
+<meta property="og:locale" content="en">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Fancy World">
 
@@ -138,11 +138,15 @@
             <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2018-11-20T05:54:53.000Z">2018-11-20</time>
                 
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/blog/categories/系统工具/">系统工具</a>
+                </div>
+                
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    20 minutes read (About 3027 words)
+                    20 minutes read (About 3051 words)
                 </span>
                 
             </div>
@@ -154,128 +158,17 @@
             
         </h1>
         <div class="content">
-            <h2 id="1-SSH概要介绍"><a href="#1-SSH概要介绍" class="headerlink" title="1. SSH概要介绍"></a>1. SSH概要介绍</h2><blockquote>
-<h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p>Secure Shell（安全外壳协议，简称SSH）是一种加密的网络传输协议，可在不安全的网络中为网络服务提供安全的传输环境。</p>
-<p>SSH通过在网络中建立安全隧道（英语：secure channel）来实现SSH客户端与服务器之间的连接。虽然任何网络服务都可以通过SSH实现安全传输，SSH最常见的用途是远程登录系统，人们通常利用SSH来传输命令行界面和远程执行命令。使用频率最高的场合类Unix系统，但是Windows操作系统也能有限度地使用SSH。</p>
-<p>在设计上，SSH是Telnet和非安全shell的替代品。Telnet和Berkeley rlogin（英语：rlogin）、rsh、rexec（英语：Remote Process Execution）等协议采用明文传输，使用不可靠的密码，容易遭到监听、嗅探和中间人攻击[4]。SSH旨在保证非安全网络环境（例如互联网）中信息加密完整可靠。</p>
-<h3 id="密钥管理"><a href="#密钥管理" class="headerlink" title="密钥管理"></a>密钥管理</h3><p>在类Unix系统中，已许可登录的公钥通常保存在用户 /home 目录的 ~/.ssh/authorized_keys 文件中，该文件只由SSH使用。当远程机器持有公钥，而本地持有对应私钥时，登录过程不再需要手动输入密码。另外为了额外的安全性，私钥本身也能用密码保护。</p>
-<p>私钥会保存在固定位置，也可以通过命令行参数指定（例如ssh命令的“-i”选项）。ssh-keygen是生成密钥的工具之一。</p>
-<p>SSH也支持基于密码的身份验证，此时密钥是自动生成的。若客户端和服务端从未进行过身份验证，SSH未记录服务器端所使用的密钥，那么攻击者可以模仿服务器端请求并获取密码，即中间人攻击。但是密码认证可以禁用，而且SSH客户端在发现新密钥或未知服务器时会向用户发出警告。</p>
-<h3 id="SSH的安全验证"><a href="#SSH的安全验证" class="headerlink" title="SSH的安全验证"></a>SSH的安全验证</h3><p>在客户端来看，SSH提供两种级别的安全验证。</p>
-<p>第一种级别（基于密码的安全验证），知道帐号和密码，就可以登录到远程主机，并且所有传输的数据都会被加密。但是，可能会有别的服务器在冒充真正的服务器，无法避免被“中间人”攻击。</p>
-<p>第二种级别（基于密钥的安全验证），需要依靠密钥，也就是你必须为自己创建一对密钥，并把公有密钥放在需要访问的服务器上。客户端软件会向服务器发出请求，请求用你的密钥进行安全验证。服务器收到请求之后，先在你在该服务器的用户根目录下寻找你的公有密钥，然后把它和你发送过来的公有密钥进行比较。如果两个密钥一致，服务器就用公有密钥加密“质询”（challenge）并把它发送给客户端软件。从而避免被“中间人”攻击。</p>
-<p>在服务器端，SSH也提供安全验证。 </p>
-<p>在第一种方案中，主机将自己的<strong>公用密钥分发给相关的客户端</strong>，客户端在访问主机时则使用<strong>该主机的公开密钥来加密数据</strong>，主机则使用自己的<strong>私有密钥来解密数据</strong>，从而实现主机密钥认证，确保数据的保密性。 </p>
-<p>在第二种方案中，存在一个密钥认证中心，所有提供服务的<strong>主机都将自己的公开密钥提交给认证中心</strong>，而任何作为客户端的主机则只要保存一份认证中心的公开密钥就可以了。在这种模式下，客户端必须访问认证中心然后才能访问服务器主机。</p>
-<p>摘自<a href="https://zh.wikipedia.org/wiki/Secure_Shell" target="_blank" rel="noopener">维基百科 Secure Shell</a></p>
-</blockquote>
-<h2 id="2-SSH登录远程服务器"><a href="#2-SSH登录远程服务器" class="headerlink" title="2. SSH登录远程服务器"></a>2. SSH登录远程服务器</h2><p>由于macOS和linux都提供了SSH，可以直接从终端进行操作</p>
-<h2 id="2-1-基于密码的安全验证"><a href="#2-1-基于密码的安全验证" class="headerlink" title="2.1 基于密码的安全验证"></a>2.1 基于密码的安全验证</h2><p>假定要以用户名user，登录远程主机host</p>
-<figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">$</span> ssh user@host</span><br></pre></td></tr></table></figure>
-<p>如果本地用户名和服务器用户名一致的话，可以省略用户名</p>
-<figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">$</span> ssh host</span><br></pre></td></tr></table></figure>
-<p>SSH的默认端口是22，登录请求会默认请求远程主机的22号端口。可以通过p参数来制定连接的端口号</p>
-<figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">$</span> ssh -p 8888 user@host</span><br></pre></td></tr></table></figure>
-<p>登录过程如下图所示</p>
-<p><img src="https://ws1.sinaimg.cn/large/006tNc79ly1frsajqipmmj30de025mxg.jpg" alt="SSH远程登录密码验证"></p>
-<h3 id="首次登录"><a href="#首次登录" class="headerlink" title="首次登录"></a>首次登录</h3><p>如果你是第一次登录对方主机，系统会出现下面的提示：</p>
-<p><img src="https://ws1.sinaimg.cn/large/006tNc79ly1frsajq1nfmj30jb041t9x.jpg" alt="SSH首次远程登录提示"></p>
-<p>这段话的意思是，无法确认host主机的真实性，只知道它的公钥指纹，问你还想继续连接吗？</p>
-<p>所谓”公钥指纹”，是指公钥长度较长（这里采用RSA算法，长达1024位），很难比对，所以对其进行MD5计算，将它变成一个128位的指纹。</p>
-<p>很自然的一个问题就是，用户怎么知道远程主机的公钥指纹应该是多少？回答是没有好办法，远程主机必须在自己的网站上贴出公钥指纹，以便用户自行核对。</p>
-<p>假定经过风险衡量以后，用户决定接受这个远程主机的公钥。</p>
-<figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Are you sure you want to continue connecting (yes/no)? yes</span><br></pre></td></tr></table></figure>
-<p>系统会出现一句提示，表示host主机已经得到认可，并被添加至kown hosts列表里</p>
-<figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Warning: Permanently added '39.107.85.55' (ECDSA) to the list of known hosts.</span><br></pre></td></tr></table></figure>
-<p>然后，会要求输入密码。</p>
-<figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root@39.107.85.55's password:</span><br></pre></td></tr></table></figure>
-<p>如果密码正确，就可以成功登录了。</p>
-<h3 id="known-hosts文件"><a href="#known-hosts文件" class="headerlink" title="known_hosts文件"></a>known_hosts文件</h3><p>每个SSH用户都有自己的<code>known_hosts</code>文件，当远程主机的公钥被接受以后，它就会被保存在文件<code>$HOME/.ssh/known_hosts</code>之中。下次再连接这台主机，系统就会认出它的公钥已经保存在本地了，从而跳过警告部分，直接提示输入密码。</p>
-<p>下图为用户目录下的<code>known_hosts</code>文件，可以看到刚才登录的服务器信息已经添加到了文件中。</p>
-<p><img src="https://ws3.sinaimg.cn/large/006tNc79ly1frsajofg7bj30hu0ao428.jpg" alt="用户目录下的konwn_hosts文件"></p>
-<h2 id="2-2-基于密钥的安全验证"><a href="#2-2-基于密钥的安全验证" class="headerlink" title="2.2 基于密钥的安全验证"></a>2.2 基于密钥的安全验证</h2><p>用户将自己的<strong>公钥储存在远程主机</strong>上。登录的时候，远程主机会向用户发送一段随机字符串，用户用自己的私钥加密后，再发回来。远程主机用事先储存的公钥进行解密，如果成功，就证明用户是可信的，直接允许登录shell，不再要求密码</p>
-<h3 id="ssh-文件夹说明"><a href="#ssh-文件夹说明" class="headerlink" title=".ssh 文件夹说明"></a>.ssh 文件夹说明</h3><p>在用户目录的home目录下，有一个<code>.ssh</code>的目录，和当前用户ssh配置认证相关的文件，几乎都在这个目录下。主要有以下相关文件</p>
-<ul>
-<li>authorized_keys：存放远程免密登录的公钥,主要通过这个文件记录多台机器的公钥</li>
-<li>id_rsa：生成的私钥文件</li>
-<li>id_rsa.pub：生成的公钥文件</li>
-<li>know_hosts：已知的主机公钥清单</li>
-</ul>
-<h3 id="文件的权限"><a href="#文件的权限" class="headerlink" title="文件的权限"></a>文件的权限</h3><p>为了让私钥文件和公钥文件能够在认证中起作用，请确保权限正确。</p>
-<p>对于<code>.ssh</code> 以及父文件夹，当前用户用户一定要有执行权限，其他用户最多只能有执行权限。</p>
-<p>对于公钥和私钥文件也是: 当前用户一定要有执行权限，其他用户最多只能有执行权限。</p>
-<blockquote>
-<p>对于利用公钥登录，对其他用户配置执行权限是没有问题的。但是对于git，公钥和私钥, 以及config等相关文件的权限，其他用户不可有任何权限。</p>
-</blockquote>
-<h3 id="ssh-keygen-生成的文件名和文件位置"><a href="#ssh-keygen-生成的文件名和文件位置" class="headerlink" title="ssh-keygen 生成的文件名和文件位置"></a>ssh-keygen 生成的文件名和文件位置</h3><p><code>ssh-keygen</code> 可用来生成ssh公钥认证所需的公钥和私钥文件。</p>
-<p>使用 <code>ssh-keygen</code> 时，请先进入到 <code>~/.ssh</code> 目录，不存在的话，请先创建。并且保证 <code>~/.ssh</code> 以及所有父目录的权限不能大于 <code>711</code></p>
-<p>使用 <code>ssh-kengen</code>命令 会在~/.ssh/目录下生成两个文件</p>
-<p>不指定文件名和密钥类型的时候，默认生成的两个文件是：</p>
-<ul>
-<li><code>id_rsa</code></li>
-<li><code>id_rsa.pub</code></li>
-</ul>
-<p>第一个是私钥文件，第二个是公钥文件。</p>
-<p>生成ssh key的时候，不指定参数如下图所示</p>
-<figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">$</span> ssh-keygen</span><br></pre></td></tr></table></figure>
-<p><img src="https://ws2.sinaimg.cn/large/006tNc79ly1frsajr1wdzj30fc0b3taa.jpg" alt="ssh-keygen无参数"></p>
-<ul>
-<li>默认生成种类为RSA的密钥对</li>
-<li>默认文件名为<code>id_rsa</code></li>
-<li>密钥对默认保存地址为<code>/user_home_path/.ssh/</code></li>
-</ul>
-<h3 id="ssh-keygen-命令参数说明"><a href="#ssh-keygen-命令参数说明" class="headerlink" title="ssh-keygen 命令参数说明"></a>ssh-keygen 命令参数说明</h3><p>可以通过<code>man ssh-keygen</code>来查询该命令的全参数说明</p>
-<p>下面对常见的参数进行说明</p>
-<figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">$</span> ssh-keygen -t rsa -C "your_email@example.com"</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p><code>-t dsa | ecdsa | ed25519 | rsa</code></p>
-<blockquote>
-<p>Specifies the type of key to create.  The possible values are “dsa’’, “ecdsa’’, “ed25519’’, or “rsa’’.</p>
-</blockquote>
-</li>
-<li><p><code>-C comment</code></p>
-<blockquote>
-<p>Provides a new comment.</p>
-</blockquote>
-</li>
-<li><p><code>-f filename</code></p>
-<blockquote>
-<p>Specifies the filename of the key file.</p>
-</blockquote>
-</li>
-</ul>
-<h3 id="远程免密登录"><a href="#远程免密登录" class="headerlink" title="远程免密登录"></a>远程免密登录</h3><p>同一本地服务器的，地址为localhost，不用重写IP</p>
-<p><img src="https://ws3.sinaimg.cn/large/006tNc79ly1frsajpibu0j30gt0f9gmn.jpg" alt="SSH远程免密登录流程"></p>
-<p>如果希望ssh公钥生效需满足至少下面两个条件：</p>
-<ul>
-<li>.ssh目录的权限必须是700 </li>
-<li>.ssh/authorized_keys文件权限必须是600</li>
-</ul>
-<p>将公钥发送给远程服务器有如下几种方式</p>
-<h4 id="1-通过ssh-copy-id的方式"><a href="#1-通过ssh-copy-id的方式" class="headerlink" title="1. 通过ssh-copy-id的方式"></a>1. 通过ssh-copy-id的方式</h4><figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">$</span> ssh-copy-id -i ~/.ssh/id_rsa.pub user@host</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p><code>-i identity_file</code></p>
-<blockquote>
-<p>Use only the key(s) contained in identity_file (rather than looking for identities via ssh-add(1) or in the default_ID_file). </p>
-<p> If the filename doesnot end in .pub this is added.  If the filename is omitted, the default_ID_file is used.</p>
-<p>Note that this can be used to ensure that the keys copied have the comment one prefers and/or extra options applied, by ensuring that the key file has these set as preferred before the copy is attempted.</p>
-</blockquote>
-</li>
-</ul>
-<p>不输入<code>-i</code>默认为<code>.ssh/id_rsa.pub</code></p>
-<h4 id="2-通过scp将内容写到对方的文件中"><a href="#2-通过scp将内容写到对方的文件中" class="headerlink" title="2. 通过scp将内容写到对方的文件中"></a>2. 通过scp将内容写到对方的文件中</h4><figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">$</span> scp -p ~/.ssh/id_rsa.pub user@host:/user_home_path/.ssh/authorized_keys</span><br></pre></td></tr></table></figure>
-<p>也可以分两步进行</p>
-<figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//将文件拷贝至远程服务器</span><br><span class="line"><span class="hljs-meta">$</span> scp ~/.ssh/id_rsa.pub user@host:pub_key </span><br><span class="line"></span><br><span class="line">//将内容追加到authorized_keys文件中， 不过要登录远程服务器来执行这条命令</span><br><span class="line"><span class="hljs-meta">$</span> cat ~/pub_key &gt;&gt; ~/.ssh/authorized_keys</span><br></pre></td></tr></table></figure>
-<h4 id="3-手工复制粘贴的方式"><a href="#3-手工复制粘贴的方式" class="headerlink" title="3. 手工复制粘贴的方式"></a>3. 手工复制粘贴的方式</h4><p>将本地id_rsa.pub文件的内容拷贝至远程服务器的~/.ssh/authorized_keys文件中</p>
-<h4 id="4-通过Ansible实现批量免密-未验证"><a href="#4-通过Ansible实现批量免密-未验证" class="headerlink" title="4. 通过Ansible实现批量免密(未验证)"></a>4. 通过Ansible实现批量免密(未验证)</h4><p>4.1 将需要做免密操作的机器hosts添加到/etc/ansible/hosts下：</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[Avoid close]</span><br><span class="line"></span><br><span class="line">192.168.91.132</span><br><span class="line"></span><br><span class="line">192.168.91.133</span><br><span class="line"></span><br><span class="line">192.168.91.134</span><br></pre></td></tr></table></figure>
-<p>4.2 执行命令进行免密操作</p>
-<figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ansible &lt;groupname&gt; -m authorized_key -a "user=root key='&#123;&#123; lookup('file','/root/.ssh/id_rsa.pub') &#125;&#125;'" -k</span><br></pre></td></tr></table></figure>
-<p>示例：</p>
-<figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">[root@test sshpass-1.05]# ansible test -m authorized_key -a "user=root key='&#123;&#123; lookup('file','/root/.ssh/id_rsa.pub') &#125;&#125;'" -k</span><br><span class="line">　　SSH password: -----&gt;输入密码</span><br><span class="line">　　192.168.91.135 | success &gt;&gt; &#123;</span><br><span class="line">　　"changed": true, </span><br><span class="line">　　"key": "ssh-rsa 　　 AAAAB3NzaC1yc2EAAAABIwAAAQEArZI4kxlYuw7j1nt5ueIpTPWfGBJoZ8Mb02OJHR8yGW7A3izwT3/uhkK7RkaGavBbAlprp5bxp3i0TyNxa/apBQG5NiqhYO8YCuiGYGsQAGwZCBlNLF3gq1/18B6FV5moE/8yTbFA4dBQahdtVP PejLlSAbb5ZoGK8AtLlcRq49IENoXB99tnFVn3gMM0aX24ido1ZF9RfRWzfYF7bVsLsrIiMPmVNe5KaGL9kZ0svzoZ708yjWQQCEYWp0m+sODbtGPC34HMGAHjFlsC/SJffLuT/ug/hhCJUYeExHIkJF8OyvfC6DeF7ArI6zdKER7D8M0SM　　WQmpKUltj2nltuv3w== root@localhost.localdomain", </span><br><span class="line">　　"key_options": null, </span><br><span class="line">　　"keyfile": "/root/.ssh/authorized_keys", </span><br><span class="line">　　"manage_dir": true, </span><br><span class="line">　　"path": null, </span><br><span class="line">　　"state": "present", </span><br><span class="line">　　"unique": false, </span><br><span class="line">　　"user": "root"</span><br><span class="line">　　&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="3-SSH登录git-repo"><a href="#3-SSH登录git-repo" class="headerlink" title="3. SSH登录git repo"></a>3. SSH登录git repo</h2>
+            <p>本文主要介绍了SSH的在远程登录方面的原理和应用。</p>
         </div>
         
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/blog/2018/11/20/SSH的应用/#more">Read More</a>
+                </div>
+            </div>
+        </div>
         
         
     </div>
@@ -322,7 +215,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Article
+                        Post
                     </p>
                     <p class="title has-text-weight-normal">
                         1
@@ -332,27 +225,27 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Catégories
+                        Category
                     </p>
                     <p class="title has-text-weight-normal">
-                        0
+                        1
                     </p>
                 </div>
             </div>
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Tag
+                        Tags
                     </p>
                     <p class="title has-text-weight-normal">
-                        1
+                        2
                     </p>
                 </div>
             </div>
         </nav>
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://github.com/BlackCatXJ">
-                SUIVRE</a>
+                Follow</a>
         </div>
         
         
@@ -360,6 +253,39 @@
 </div>
     
         
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Categories
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/blog/categories/系统工具/">
+            <span class="level-start">
+                <span class="level-item">系统工具</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Tag Cloud
+        </h3>
+        <a href="/blog/tags/SSH/" style="font-size: 10px;">SSH</a> <a href="/blog/tags/远程登录/" style="font-size: 10px;">远程登录</a>
+    </div>
+</div>
+
     
     
         <div class="card card-transparent is-hidden-widescreen">
@@ -367,33 +293,8 @@
             
 <div class="card widget">
     <div class="card-content">
-        <div class="menu">
-            <h3 class="menu-label">
-                Catégories
-            </h3>
-            <ul class="menu-list">
-            
-            </ul>
-        </div>
-    </div>
-</div>
-        
-            
-<div class="card widget">
-    <div class="card-content">
         <h3 class="menu-label">
-            Nuage de tags
-        </h3>
-        <a href="/blog/tags/SSH/" style="font-size: 10px;">SSH</a>
-    </div>
-</div>
-
-        
-            
-<div class="card widget">
-    <div class="card-content">
-        <h3 class="menu-label">
-            Récents
+            Recent
         </h3>
         
         <article class="media">
@@ -409,7 +310,7 @@
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-11-20T05:54:53.000Z">2018-11-20</time></div>
                     <a href="/blog/2018/11/20/SSH的应用/" class="has-link-black-ter is-size-6">SSH的应用</a>
                     <p class="is-size-7 is-uppercase">
-                        
+                        <a class="has-link-grey -link" href="/blog/categories/系统工具/">系统工具</a>
                     </p>
                 </div>
             </div>
@@ -462,6 +363,17 @@
                     </a>
                 </li>
                 
+                <li>
+                    <a class="level is-marginless" href="/blog/tags/远程登录/">
+                        <span class="level-start">
+                            <span class="level-item">远程登录</span>
+                        </span>
+                        <span class="level-end">
+                            <span class="level-item tag">1</span>
+                        </span>
+                    </a>
+                </li>
+                
             </ul>
         </div>
     </div>
@@ -480,33 +392,8 @@
         
 <div class="card widget">
     <div class="card-content">
-        <div class="menu">
-            <h3 class="menu-label">
-                Catégories
-            </h3>
-            <ul class="menu-list">
-            
-            </ul>
-        </div>
-    </div>
-</div>
-    
-        
-<div class="card widget">
-    <div class="card-content">
         <h3 class="menu-label">
-            Nuage de tags
-        </h3>
-        <a href="/blog/tags/SSH/" style="font-size: 10px;">SSH</a>
-    </div>
-</div>
-
-    
-        
-<div class="card widget">
-    <div class="card-content">
-        <h3 class="menu-label">
-            Récents
+            Recent
         </h3>
         
         <article class="media">
@@ -522,7 +409,7 @@
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-11-20T05:54:53.000Z">2018-11-20</time></div>
                     <a href="/blog/2018/11/20/SSH的应用/" class="has-link-black-ter is-size-6">SSH的应用</a>
                     <p class="is-size-7 is-uppercase">
-                        
+                        <a class="has-link-grey -link" href="/blog/categories/系统工具/">系统工具</a>
                     </p>
                 </div>
             </div>
@@ -568,6 +455,17 @@
                     <a class="level is-marginless" href="/blog/tags/SSH/">
                         <span class="level-start">
                             <span class="level-item">SSH</span>
+                        </span>
+                        <span class="level-end">
+                            <span class="level-item tag">1</span>
+                        </span>
+                    </a>
+                </li>
+                
+                <li>
+                    <a class="level is-marginless" href="/blog/tags/远程登录/">
+                        <span class="level-start">
+                            <span class="level-item">远程登录</span>
                         </span>
                         <span class="level-end">
                             <span class="level-item tag">1</span>
@@ -728,9 +626,9 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Articles',
+                POSTS: 'Posts',
                 PAGES: 'Pages',
-                CATEGORIES: 'Catégories',
+                CATEGORIES: 'Categories',
                 TAGS: 'Tags',
                 UNTITLED: '(Untitled)',
             },
