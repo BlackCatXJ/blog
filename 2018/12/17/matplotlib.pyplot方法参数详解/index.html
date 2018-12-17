@@ -2,18 +2,23 @@
 <html lang="en">
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-<title>Tag: Tensorflow - Fancy World</title>
+<title>matplotlib.pyplot方法参数详解 - Fancy World</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta property="og:type" content="website">
-<meta property="og:title" content="Fancy World">
-<meta property="og:url" content="https://blackcatxj.github.io/blog/tags/Tensorflow/index.html">
+    <meta name="description" content="本文介绍了matplotlib库中pyplot里面方法的相关参数和使用方式">
+<meta name="keywords" content="Unfinished">
+<meta property="og:type" content="article">
+<meta property="og:title" content="matplotlib.pyplot方法参数详解">
+<meta property="og:url" content="https://blackcatxj.github.io/blog/2018/12/17/matplotlib.pyplot方法参数详解/index.html">
 <meta property="og:site_name" content="Fancy World">
+<meta property="og:description" content="本文介绍了matplotlib库中pyplot里面方法的相关参数和使用方式">
 <meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2018-12-17T07:45:15.888Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Fancy World">
+<meta name="twitter:title" content="matplotlib.pyplot方法参数详解">
+<meta name="twitter:description" content="本文介绍了matplotlib库中pyplot里面方法的相关参数和使用方式">
 
 
 
@@ -79,7 +84,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/blog/">
             
-                <img src="/blog/images/logo-with-name.png" alt="Fancy World" height="28">
+                <img src="/blog/images/logo-with-name.png" alt="matplotlib.pyplot方法参数详解" height="28">
             
             </a>
         </div>
@@ -100,6 +105,10 @@
             <div class="navbar-end">
                 
                 
+                <a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
                 
                 <a class="navbar-item search" title="Search" href="javascript:;">
                     <i class="fas fa-search"></i>
@@ -114,39 +123,28 @@
         <div class="container">
             <div class="columns">
                 <div class="column is-10-tablet is-10-desktop is-6-widescreen has-order-2 column-main"><div class="card">
-    <div class="card-content">
-        <nav class="breadcrumb" aria-label="breadcrumbs">
-        <ul>
-            <li><a href="/blog/tags">Tags</a></li>
-            <li class="is-active"><a href="#" aria-current="page">Tensorflow</a></li>
-        </ul>
-        </nav>
-    </div>
-</div>
-
-    <div class="card">
     
     <div class="card-image">
-        <a href="/blog/2018/11/30/Tensorfolow环境的安装/" class="image is-7by1">
-            <img class="thumbnail" src="https://ws2.sinaimg.cn/large/006tNbRwgy1fxq0z2l6dsj30sg0er3yg.jpg" alt="Tensorfolow环境的安装">
-        </a>
+        <span class="image is-7by1">
+            <img class="thumbnail" src="https://ws4.sinaimg.cn/large/006tNbRwgy1fy9qca2lndj30tw0dw0ub.jpg" alt="matplotlib.pyplot方法参数详解">
+        </span>
     </div>
     
     <div class="card-content article ">
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2018-11-30T05:27:07.000Z">2018-11-30</time>
+                <time class="level-item has-text-grey" datetime="2018-12-17T06:27:35.000Z">2018-12-17</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/blog/categories/环境配置/">环境配置</a>
+                <a class="has-link-grey -link" href="/blog/categories/Python/">Python</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/blog/categories/Python/图像处理/">图像处理</a>
                 </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    a few seconds read (About 17 words)
+                    4 minutes read (About 663 words)
                 </span>
                 
             </div>
@@ -154,28 +152,391 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/blog/2018/11/30/Tensorfolow环境的安装/">Tensorfolow环境的安装</a>
+                matplotlib.pyplot方法参数详解
             
         </h1>
         <div class="content">
-            <p>本文主要介绍的了Tensorflow的安装和配置。</p>
+            <p>本文介绍了matplotlib库中pyplot里面方法的相关参数和使用方式</p>
+<a id="more"></a>
+<figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt</span><br></pre></td></tr></table></figure>
+<h2 id="1-plt-plot-参数详解"><a href="#1-plt-plot-参数详解" class="headerlink" title="1. plt.plot()参数详解"></a>1. plt.plot()参数详解</h2><p>在交互环境中查看该方法的帮助文档</p>
+<figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">help(plt.plot)</span><br></pre></td></tr></table></figure>
+<p>plot方法一般的调用形式</p>
+<figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Call signatures:</span><br><span class="line"><span class="hljs-comment"># 绘制单条线 </span></span><br><span class="line">plot([x], y, [fmt], data=<span class="hljs-keyword">None</span>, **kwargs)</span><br><span class="line"><span class="hljs-comment"># 绘制多条线</span></span><br><span class="line">plot([x], y, [fmt], [x2], y2, [fmt2], ..., **kwargs)</span><br></pre></td></tr></table></figure>
+<h3 id="1-1-fmt-参数"><a href="#1-1-fmt-参数" class="headerlink" title="1.1 [fmt]参数"></a>1.1 [fmt]参数</h3><p><strong>Format Strings</strong></p>
+<p>可选参数[fmt] 是一个字符串来定义图的基本属性如：颜色（color），点型（marker），线型（linestyle）</p>
+<p>A format string consists of a part for color, marker and line::<br><figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fmt = <span class="hljs-string">'[color][marker][line]'</span></span><br></pre></td></tr></table></figure></p>
+<p>Each of them is optional. If not provided, the value from the style cycle is used. </p>
+<p>Exception: If <code>line</code> is given, but no <code>marker</code>, the data will be a line without markers.</p>
+<p>fmt可以用每个属性的单字母缩写来赋值，也可以用关键字参数进行赋值，如下所示</p>
+<figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">plot(x, y, <span class="hljs-string">'go--'</span>, linewidth=<span class="hljs-number">2</span>, markersize=<span class="hljs-number">12</span>)</span><br><span class="line">plot(x, y, color=<span class="hljs-string">'green'</span>, marker=<span class="hljs-string">'o'</span>, linestyle=<span class="hljs-string">'dashed'</span>,linewidth=<span class="hljs-number">2</span>, markersize=<span class="hljs-number">12</span>)</span><br></pre></td></tr></table></figure>
+<p>以下列出支持fmt的参数名称</p>
+<p><strong>颜色参数[color]</strong> </p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">character</th>
+<th style="text-align:center">Color</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">b</td>
+<td style="text-align:center">blue 蓝</td>
+</tr>
+<tr>
+<td style="text-align:center">g</td>
+<td style="text-align:center">green 绿</td>
+</tr>
+<tr>
+<td style="text-align:center">r</td>
+<td style="text-align:center">red 红</td>
+</tr>
+<tr>
+<td style="text-align:center">c</td>
+<td style="text-align:center">cyan 蓝绿</td>
+</tr>
+<tr>
+<td style="text-align:center">m</td>
+<td style="text-align:center">megenta 洋红</td>
+</tr>
+<tr>
+<td style="text-align:center">y</td>
+<td style="text-align:center">yellow 黄</td>
+</tr>
+<tr>
+<td style="text-align:center">k</td>
+<td style="text-align:center">black 黑</td>
+</tr>
+<tr>
+<td style="text-align:center">w</td>
+<td style="text-align:center">white 白</td>
+</tr>
+</tbody>
+</table>
+<p><strong>标志参数[marker]</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">character</th>
+<th style="text-align:center">description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">.</td>
+<td style="text-align:center">point marker</td>
+</tr>
+<tr>
+<td style="text-align:center">,</td>
+<td style="text-align:center">pixel marker</td>
+</tr>
+<tr>
+<td style="text-align:center">o</td>
+<td style="text-align:center">circle marker</td>
+</tr>
+<tr>
+<td style="text-align:center">v</td>
+<td style="text-align:center">triangle_down marker</td>
+</tr>
+<tr>
+<td style="text-align:center">^</td>
+<td style="text-align:center">triangle_up marker</td>
+</tr>
+<tr>
+<td style="text-align:center">&lt;</td>
+<td style="text-align:center">triangle_left marker</td>
+</tr>
+<tr>
+<td style="text-align:center">&gt;</td>
+<td style="text-align:center">triangle_right marker</td>
+</tr>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">tri_down marker</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center">tri_up marker</td>
+</tr>
+<tr>
+<td style="text-align:center">3</td>
+<td style="text-align:center">tri_left marker</td>
+</tr>
+<tr>
+<td style="text-align:center">4</td>
+<td style="text-align:center">tri_right marker</td>
+</tr>
+<tr>
+<td style="text-align:center">s</td>
+<td style="text-align:center">square marker</td>
+</tr>
+<tr>
+<td style="text-align:center">p</td>
+<td style="text-align:center">pentagon marker</td>
+</tr>
+<tr>
+<td style="text-align:center">*</td>
+<td style="text-align:center">star marker</td>
+</tr>
+<tr>
+<td style="text-align:center">h</td>
+<td style="text-align:center">hexagon1 marker</td>
+</tr>
+<tr>
+<td style="text-align:center">H</td>
+<td style="text-align:center">hexagon2 marker</td>
+</tr>
+<tr>
+<td style="text-align:center">+</td>
+<td style="text-align:center">plus marker</td>
+</tr>
+<tr>
+<td style="text-align:center">x</td>
+<td style="text-align:center">x marker</td>
+</tr>
+<tr>
+<td style="text-align:center">D</td>
+<td style="text-align:center">diamond marker</td>
+</tr>
+<tr>
+<td style="text-align:center">d</td>
+<td style="text-align:center">thin_diamond marker</td>
+</tr>
+<tr>
+<td style="text-align:center">_</td>
+<td style="text-align:center">hline marker</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment"># markdown表格符号冲突，单独一行写出</span></span><br><span class="line"><span class="hljs-string">'|'</span>    vline marker</span><br></pre></td></tr></table></figure>
+<p><strong>线型样式[linestyle]</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">character</th>
+<th style="text-align:center">description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">-</td>
+<td style="text-align:center">solid line style 实线</td>
+</tr>
+<tr>
+<td style="text-align:center">–</td>
+<td style="text-align:center">dashed line style 虚线</td>
+</tr>
+<tr>
+<td style="text-align:center">-.</td>
+<td style="text-align:center">dash-dot line style 点画线</td>
+</tr>
+<tr>
+<td style="text-align:center">:</td>
+<td style="text-align:center">dotted line style 点线</td>
+</tr>
+</tbody>
+</table>
+<h3 id="1-2-kwargs参数"><a href="#1-2-kwargs参数" class="headerlink" title="1.2 **kwargs参数"></a>1.2 **kwargs参数</h3><p>**kwargs are used to specify properties like a line label (for auto legends), linewidth, antialiasing, marker face color.</p>
+<figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">plot([<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>], [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>], <span class="hljs-string">'go-'</span>, label=<span class="hljs-string">'line 1'</span>, linewidth=<span class="hljs-number">2</span>)</span><br><span class="line">plot([<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>], [<span class="hljs-number">1</span>,<span class="hljs-number">4</span>,<span class="hljs-number">9</span>], <span class="hljs-string">'rs'</span>,  label=<span class="hljs-string">'line 2'</span>)</span><br></pre></td></tr></table></figure>
+<p>以下列出**kwargs参数以及相关描述</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">name</th>
+<th style="text-align:left">description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">alpha 透明度</td>
+<td style="text-align:left">float (0.0 transparent through 1.0 opaque)</td>
+</tr>
+<tr>
+<td style="text-align:center">animated</td>
+<td style="text-align:left">bool</td>
+</tr>
+<tr>
+<td style="text-align:center">antialiased or aa</td>
+<td style="text-align:left">bool</td>
+</tr>
+<tr>
+<td style="text-align:center">clip_box</td>
+<td style="text-align:left">a <code>.Bbox</code> instance</td>
+</tr>
+<tr>
+<td style="text-align:center">clip_on</td>
+<td style="text-align:left">bool</td>
+</tr>
+<tr>
+<td style="text-align:center">clip_path</td>
+<td style="text-align:left">[(<code>~matplotlib.path.Path</code>, <code>.Transform</code>) , <code>.Patch</code> , None]</td>
+</tr>
+<tr>
+<td style="text-align:center">color or c</td>
+<td style="text-align:left">any matplotlib color</td>
+</tr>
+<tr>
+<td style="text-align:center">contains</td>
+<td style="text-align:left">a callable function</td>
+</tr>
+<tr>
+<td style="text-align:center">dash_capstyle</td>
+<td style="text-align:left">[‘butt’ , ‘round’ , ‘projecting’]</td>
+</tr>
+<tr>
+<td style="text-align:center">dash_joinstyle</td>
+<td style="text-align:left">[‘miter’ , ‘round’ , ‘bevel’]</td>
+</tr>
+<tr>
+<td style="text-align:center">dashes</td>
+<td style="text-align:left">sequence of on/off ink in points</td>
+</tr>
+<tr>
+<td style="text-align:center">drawstyle</td>
+<td style="text-align:left">[‘default’ , ‘steps’ , ‘steps-pre’ , ‘steps-mid’ , ‘steps-post’]</td>
+</tr>
+<tr>
+<td style="text-align:center">figure</td>
+<td style="text-align:left">a <code>.Figure</code> instance</td>
+</tr>
+<tr>
+<td style="text-align:center">fillstyle</td>
+<td style="text-align:left">[‘full’ , ‘left’ , ‘right’ , ‘bottom’ , ‘top’ , ‘none’]</td>
+</tr>
+<tr>
+<td style="text-align:center">gid</td>
+<td style="text-align:left">an id string</td>
+</tr>
+<tr>
+<td style="text-align:center">label</td>
+<td style="text-align:left">object</td>
+</tr>
+<tr>
+<td style="text-align:center">linestyle or ls</td>
+<td style="text-align:left">[‘solid’ , ‘dashed’, ‘dashdot’, ‘dotted’ , (offset, on-off-dash-seq) , ‘-‘ , ‘–’ , ‘-.’ , ‘:’ , ‘None’ , ‘ ‘ , ‘’]</td>
+</tr>
+<tr>
+<td style="text-align:center">linewidth or lw</td>
+<td style="text-align:left">float value in points</td>
+</tr>
+<tr>
+<td style="text-align:center">marker</td>
+<td style="text-align:left">:mod: <code>A valid marker style &lt;matplotlib.markers&gt;</code></td>
+</tr>
+<tr>
+<td style="text-align:center">markeredgecolor or mec</td>
+<td style="text-align:left">any matplotlib color</td>
+</tr>
+<tr>
+<td style="text-align:center">markeredgewidth or mew</td>
+<td style="text-align:left">float value in points</td>
+</tr>
+<tr>
+<td style="text-align:center">markerfacecolor or mfc</td>
+<td style="text-align:left">any matplotlib color</td>
+</tr>
+<tr>
+<td style="text-align:center">markerfacecoloralt or mfcalt</td>
+<td style="text-align:left">any matplotlib color</td>
+</tr>
+<tr>
+<td style="text-align:center">markersize or ms</td>
+<td style="text-align:left">float</td>
+</tr>
+<tr>
+<td style="text-align:center">markevery</td>
+<td style="text-align:left">[None , int , length-2 tuple of int , slice , list/array of int , float , length-2 tuple of float]</td>
+</tr>
+<tr>
+<td style="text-align:center">path_effects</td>
+<td style="text-align:left"><code>.AbstractPathEffect</code></td>
+</tr>
+<tr>
+<td style="text-align:center">picker</td>
+<td style="text-align:left">float distance in points or callable pick function fn(artist, event)</td>
+</tr>
+<tr>
+<td style="text-align:center">pickradius</td>
+<td style="text-align:left">float distance in points</td>
+</tr>
+<tr>
+<td style="text-align:center">rasterized</td>
+<td style="text-align:left">bool or None</td>
+</tr>
+<tr>
+<td style="text-align:center">sketch_params</td>
+<td style="text-align:left">float)</td>
+</tr>
+<tr>
+<td style="text-align:center">snap</td>
+<td style="text-align:left">bool or None</td>
+</tr>
+<tr>
+<td style="text-align:center">solid_capstyle</td>
+<td style="text-align:left">[‘butt’ , ‘round’ ,  ‘projecting’]</td>
+</tr>
+<tr>
+<td style="text-align:center">solid_joinstyle</td>
+<td style="text-align:left">[‘miter’ , ‘round’ , ‘bevel’]</td>
+</tr>
+<tr>
+<td style="text-align:center">transform</td>
+<td style="text-align:left">a :class: <code>matplotlib.transforms.Transform</code> instance</td>
+</tr>
+<tr>
+<td style="text-align:center">url</td>
+<td style="text-align:left">a url string</td>
+</tr>
+<tr>
+<td style="text-align:center">visible</td>
+<td style="text-align:left">bool</td>
+</tr>
+<tr>
+<td style="text-align:center">xdata</td>
+<td style="text-align:left">1D array</td>
+</tr>
+<tr>
+<td style="text-align:center">ydata</td>
+<td style="text-align:left">1D array</td>
+</tr>
+<tr>
+<td style="text-align:center">zorder</td>
+<td style="text-align:left">float</td>
+</tr>
+</tbody>
+</table>
+
         </div>
         
-        
-        <div class="level is-mobile">
+        <div class="level is-size-7 is-uppercase">
             <div class="level-start">
                 <div class="level-item">
-                <a class="button is-size-7 is-light" href="/blog/2018/11/30/Tensorfolow环境的安装/#more">Read More</a>
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/blog/tags/Unfinished/">Unfinished</a>
                 </div>
             </div>
         </div>
+        
         
         
     </div>
 </div>
 
 
-
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/blog/2018/12/07/常用编程英文缩写/">
+                <span class="level-item">常用编程英文缩写</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
 
 
 </div>
@@ -186,75 +547,28 @@
 <div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left">
     
         
-
-<div class="card widget">
+    
+        
+<div class="card widget" id="toc">
     <div class="card-content">
-        <nav class="level">
-            <div class="level-item has-text-centered">
-                <div>
-                    <img class="image is-128x128 has-mb-6" src="/blog/images/logo-with-circle.png" alt="BlackCatXJ">
-                    
-                    <p class="is-size-4 is-block">
-                        BlackCatXJ
-                    </p>
-                    
-                    
-                    <p class="is-size-6 is-block">
-                        Data Miner
-                    </p>
-                    
-                    
-                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
-                        <i class="fas fa-map-marker-alt has-mr-7"></i>
-                        <span>BeiJing HaiDian</span>
-                    </p>
-                    
-                </div>
-            </div>
-        </nav>
-        <nav class="level is-mobile">
-            <div class="level-item has-text-centered is-marginless">
-                <div>
-                    <p class="heading">
-                        Posts
-                    </p>
-                    <p class="title has-text-weight-normal">
-                        6
-                    </p>
-                </div>
-            </div>
-            <div class="level-item has-text-centered is-marginless">
-                <div>
-                    <p class="heading">
-                        Categories
-                    </p>
-                    <p class="title has-text-weight-normal">
-                        5
-                    </p>
-                </div>
-            </div>
-            <div class="level-item has-text-centered is-marginless">
-                <div>
-                    <p class="heading">
-                        Tags
-                    </p>
-                    <p class="title has-text-weight-normal">
-                        5
-                    </p>
-                </div>
-            </div>
-        </nav>
-        <div class="level">
-            <a class="level-item button is-link is-rounded" href="https://github.com/BlackCatXJ">
-                Follow</a>
+        <div class="menu">
+            <h3 class="menu-label">
+                Catalogue
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#1-plt-plot-参数详解">
+        <span>1. plt.plot()参数详解</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#1-1-fmt-参数">
+        <span>1.1 [fmt]参数</span>
+        </a></li><li>
+        <a class="is-flex" href="#1-2-kwargs参数">
+        <span>1.2 **kwargs参数</span>
+        </a></li></ul></li></ul>
         </div>
-        
-        
     </div>
 </div>
 
-    
-        
     
         
 <div class="card widget">
@@ -753,7 +1067,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/blog/">
                 
-                    <img src="/blog/images/logo-with-name.png" alt="Fancy World" height="28">
+                    <img src="/blog/images/logo-with-name.png" alt="matplotlib.pyplot方法参数详解" height="28">
                 
                 </a>
                 <p class="is-size-7">
